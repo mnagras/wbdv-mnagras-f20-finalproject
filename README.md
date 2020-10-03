@@ -1,5 +1,7 @@
 # wbdv-mnagras-f20-finalproject
 Final Project Repository for Web Development
+
+
 The project is to create a website for an online grocery store. It will have two main users: buyers and sellers. 
 The buyers would use the website:
   to search and browse for items
