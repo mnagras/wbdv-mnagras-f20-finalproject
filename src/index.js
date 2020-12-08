@@ -1,14 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {BrowserRouter as Router, Route, Link} from "react-router-dom";
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
-import SearchListComponent from "./components/SearchListComponent";
+import SearchListComponent from "./components/SearchComponent";
 import ShopManager from "./components/ShopManager";
+import HomePage from "./components/HomePageComponent";
+import routes from "./Routes.js";
 
 ReactDOM.render(
-  <ShopManager/>,
+  <App/>,
+
   document.getElementById('root')
 );
 

@@ -1,9 +1,9 @@
 import React from "react";
 import { Route, Link} from "react-router-dom";
-import ProductComponent from "./ProductComponent";
+import HeaderComponent from "./HeaderComponent";
 
 
-export default class SearchListComponent extends React.Component {
+export default class SearchComponent extends React.Component {
     constructor() {
         super()
         this.state = {
@@ -18,9 +18,10 @@ export default class SearchListComponent extends React.Component {
 
     keywordChanged = event => this.setState({keyword: event.target.value})
     searchProduct = () => {
-        fetch("http://localhost:9000/testAPI")
+        fetch(`http://localhost:9000/productListAPI/${this.state.keyword}`)
             .then(response => response.json())
-             .then(this.renderProducts)
+             .then(this.renderProducts);
+
     }
 
     renderProducts = (statusCode) =>
@@ -45,6 +46,11 @@ export default class SearchListComponent extends React.Component {
     render() {
         return (
         <div>
+        <HeaderComponent/>
+        <br/>
+        <br/>
+        <br/>
+        <div className="container">
             <h2>Search</h2>
             <div className="input-group">
                 <input value={this.state.keyword}
@@ -52,37 +58,50 @@ export default class SearchListComponent extends React.Component {
                     className="form-control"
                     placeholder="keyword"/>
                 <div className="input-group-append">
+                    <Link to={`/search/${this.state.keyword}`}></Link>
                     <button
                     onClick={this.searchProduct}
+
                     className="btn btn-primary">
                         Search
                     </button>
                 </div>
             </div>
+            <br/>
 
-            <div className="row">
-                <div className="col-3">
-            <ul className="list-group">
+            <table className="table">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Product Type</th>
+                        <th>Price</th>
+                        <th>Vendor</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+
             {
                 this.state.products.map((product, index) => (
                 product.title.includes(this.state.keyword) ?
-                    <div>
-                    <li key={product.id} className="list-group-item">
-                        Title: <Link to={`/osc/${product.id}`}> {product.title} </Link>
 
-                        Price:$ {product.variants[0].price}
+                    <tr>
+                     <td> <Link to={`/search/${product.id}`}> {product.title} </Link> </td>
+                     <td> {product.product_type}</td>
+                     <td> ${product.variants[0].price}</td>
+                     <td> {product.vendor}</td>
+                     </tr>
 
-                    </li>
-                    </div>
                     : null
                     )
                   )
             }
-            </ul>
 
-            </div>
-            </div>
+            </tbody>
+            </table>
 
+
+</div>
         </div>
         )
     }

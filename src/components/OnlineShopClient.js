@@ -1,7 +1,5 @@
 import React from "react";
-import SearchListComponent from "./SearchListComponent";
-import ProductComponent from "./ProductComponent";
-
+import SearchListComponent from "./SearchComponent";
 
 export default class OnlineShopClient extends React.Component {
     constructor(props) {
@@ -11,7 +9,7 @@ export default class OnlineShopClient extends React.Component {
         return (
         <div>
             <h1>M Store</h1>
-            <SearchListComponent/>
+
         </div>
         )
     }

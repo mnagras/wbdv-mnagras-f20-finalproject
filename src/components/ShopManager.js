@@ -1,7 +1,12 @@
 import React from "react";
-import {BrowserRouter as Router, Route, Link} from "react-router-dom";
+import {BrowserRouter as Router, Route, Link, Switch} from "react-router-dom";
 import OnlineShopClient from "./OnlineShopClient";
+import SearchComponent from "./SearchComponent";
 import ProductComponent from "./ProductComponent.js";
+import LoginComponent from "./LoginComponent";
+import RegisterComponent from "./RegisterComponent";
+import ProfileComponent from "./ProfileComponent";
+import HomePageComponent from "./HomePageComponent";
 
 class ShopManager extends React.Component {
     state = {
@@ -16,11 +21,21 @@ class ShopManager extends React.Component {
     render() {
         return(
             <Router>
+
                     <div className="container">
-                      <Link to="/osc">Shop</Link> |
-                      <Route path="/osc"  component={OnlineShopClient}/>
-                      <Route path="/osc/:productId" component={ProductComponent} />
+                    <Link to="/home">Home</Link> |
+<Switch>
+                      <Route path="/home" component={HomePageComponent}/>
+
+                      <Route path="/search/:keyword"  component={SearchComponent}/>
+                      <Route path="/login" component={LoginComponent}/>
+                      <Route path="/search/:productId" component={ProductComponent} />
+                      <Route path="/register" component={RegisterComponent}/>
+                      <Route path="/profile" component={ProfileComponent}/>
+                      </Switch>
+
                     </div>
+
             </Router>
         )
     }
