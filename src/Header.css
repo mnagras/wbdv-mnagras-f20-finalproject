@@ -107,3 +107,7 @@
   transition: opacity 350ms, transform 350ms;
 }
 
+.loggedUser {
+    color: yellow;
+}
+

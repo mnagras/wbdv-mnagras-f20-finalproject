@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import React from "react";
-import {BrowserRouter, Route, Link, Switch} from "react-router-dom";
+import { Router, Route, Link, Switch,Redirect} from "react-router-dom";
 import OnlineShopClient from "./components/OnlineShopClient";
 import SearchComponent from "./components/SearchComponent";
 import ProductComponent from "./components/ProductComponent.js";
@@ -9,10 +9,11 @@ import LoginComponent from "./components/LoginComponent";
 import RegisterComponent from "./components/RegisterComponent";
 import ProfileComponent from "./components/ProfileComponent";
 import HomePageComponent from "./components/HomePageComponent";
+import history from './history';
 
 function App() {
   return (
-    <BrowserRouter>
+    <Router history={history}>
         <Switch>
              <Route exact path="/" component={HomePageComponent}/>
              <Route exact path="/home"  component={HomePageComponent}/>
@@ -22,7 +23,7 @@ function App() {
               <Route path="/register" component={RegisterComponent}/>
               <Route path="/profile" component={ProfileComponent}/>
         </Switch>
-    </BrowserRouter>
+    </Router>
   );
 }
 

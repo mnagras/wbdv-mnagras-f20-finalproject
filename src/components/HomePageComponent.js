@@ -8,8 +8,10 @@ import RegisterComponent from "./RegisterComponent";
 import ProfileComponent from "./ProfileComponent";
 import HeaderComponent from "./HeaderComponent";
 import '../App.js';
+import { connect } from 'react-redux';
+import { userActions } from '../actions/userActions';
 
-export default class HomePageComponent extends React.Component {
+class HomePageComponent extends React.Component {
 constructor(props) {
         super(props)
     }
@@ -22,11 +24,26 @@ constructor(props) {
             <br/>
             <br/>
             <div className="container">
-              <Link to="/profile">My Profile</Link>
+               <p>This is my online store</p>
             </div>
 
-        <p>This is my online store</p>
+
         </div>
         )
     }
 }
+
+function mapState(state) {
+    //const { users, authentication } = state;
+    const { authenticationReducer } = state;
+    const { user } = authenticationReducer;
+    //return { user, users };
+    return { user };
+}
+
+const actionCreators = {
+    getUsers: userActions.getAll,
+    deleteUser: userActions.delete
+}
+
+export default connect(mapState, actionCreators)(HomePageComponent);

@@ -58,7 +58,7 @@ export default class SearchComponent extends React.Component {
                     className="form-control"
                     placeholder="keyword"/>
                 <div className="input-group-append">
-                    <Link to={`/search/${this.state.keyword}`}></Link>
+
                     <button
                     onClick={this.searchProduct}
 

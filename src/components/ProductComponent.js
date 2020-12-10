@@ -42,13 +42,29 @@ export default class ProductComponent extends React.Component {
               <h3> Product Details </h3>
               <div className="row">
                 <div className="col-3">
+                <p></p>
+                <div className="row">
+                <div className="col-3">
+                    <h5>{this.state.product.title}</h5>
+                    </div>
+
+                    </div>
                     <h6>{this.state.product.body_html}</h6>
+
                 </div>
                 <div className="col-15">
                     <img alt= "Product Image" width="200" src={this.state.product.image.src} />
                 </div>
             </div>
+
+            // only if logged in; else return log in alert
+            <button className="btn btn-primary">Like</button>
+            <button className="btn btn-success">Review</button>
+
           </div>
+
+          <h5>People who liked this product also liked</h5>
+
           </div>
         );
       }

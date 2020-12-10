@@ -5,13 +5,31 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
-import SearchListComponent from "./components/SearchComponent";
-import ShopManager from "./components/ShopManager";
-import HomePage from "./components/HomePageComponent";
+import {combineReducers, createStore, applyMiddleware} from "redux";
+import {Provider} from "react-redux";
 import routes from "./Routes.js";
+import authenticationReducer from "./reducers/authentication.reducer";
+import userReducer from "./reducers/user.reducer";
+import thunkMiddleware from 'redux-thunk';
+
+
+const rootReducer = combineReducers({
+    authenticationReducer,
+    userReducer
+})
+
+const store = createStore(rootReducer,
+applyMiddleware(
+        thunkMiddleware
+    ))
+
 
 ReactDOM.render(
-  <App/>,
+  <Provider store={store}>
+        <App/>
+    </Provider>,
+
+
 
   document.getElementById('root')
 );

@@ -1,19 +1,72 @@
 import React from "react";
 import { Route, Link} from "react-router-dom";
 import HeaderComponent from "./HeaderComponent";
+import { connect } from 'react-redux';
+import { userActions } from '../actions/userActions';
 
-export default class LoginComponent extends React.Component {
+
+ class LoginComponent extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
+
+         // reset login status
+         this.props.logout();
+
+        this.state = {
+                  user: {
+                    email: '',
+                    password: '',
+
+                  },
+                  message: ''
+                };
+                this.changeHandler = this.changeHandler.bind(this);
+                this.loginUser = this.loginUser.bind(this);
     }
 
+     changeHandler(e) {
+            e.persist();
+            let store = this.state;
+            store.user[e.target.id] = e.target.value;
+            this.setState(store);
+        }
+
+        setLogin = (statusCode) => {
+            if (statusCode.body.includes('Login is successful')) {
+                this.props.history.push("/home");
+            }
+            else {
+                this.setState({message: statusCode.body})
+            }}
+
+
+        loginUser(e) {
+           e.preventDefault();
+           if (this.state.user.email && this.state.user.password) {
+            this.props.login(this.state.user);
+           }
+           else {
+            this.setState({message: "Enter email and password"})
+           }
+           /*
+           fetch("http://localhost:9000/users/login",
+            {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json"
+                },
+                body: JSON.stringify(this.state.user)
+            })
+            .then(response => response.json())
+            .then(this.setLogin)
+            */
+            }
+
+
     render() {
+        const { loggingIn } = this.props;
+
         return (
-        <div>
-            <HeaderComponent/>
-            <br/>
-            <br/>
-            <br/>
             <div className="container">
                         <h1>
                             Sign In
@@ -21,12 +74,13 @@ export default class LoginComponent extends React.Component {
             
                         <form>
                             <div className="form-group row">
-                                <label for="username" className="col-sm-2 col-form-label">
-                                    Username </label>
+                                <label for="email" className="col-sm-2 col-form-label">
+                                    Email </label>
                                 <div className="col-sm-10">
                                     <input className="form-control"
-                                           id="username"
-                                           placeholder="Alice"></input>
+                                           id="email"
+                                           onChange={this.changeHandler}
+                                           placeholder="alice@gmail.com"></input>
                                 </div>
                             </div>
                             <div className="form-group row">
@@ -34,15 +88,18 @@ export default class LoginComponent extends React.Component {
                                     Password </label>
                                 <div className="col-sm-10">
                                     <input type="password" className="form-control"
-                                           id="password" placeholder="123qwe#$%"></input>
+                                           id="password"
+                                           onChange={this.changeHandler}
+                                           placeholder="123qwe#$%"></input>
                                 </div>
                             </div>
                             <div className="form-group row">
                                 <label className="col-sm-2 col-form-label"></label>
                                 <div className="col-sm-10">
-                                    <a href="../"
-                                    className="btn btn-primary btn-block"> Sign in
-                                    </a>
+                                <label className="col-sm-10 col-form-label">{this.props.errorMessage}</label>
+                                    <button
+                                    className="btn btn-primary btn-block" onClick={this.loginUser}> Sign in
+                                    </button>
                                     <div className="row">
                                         <div className="col-6">
                                             <a href="#">Forgot Password?</a>
@@ -56,10 +113,22 @@ export default class LoginComponent extends React.Component {
                                 </div>
                             </div>
                         </form>
-                    </div>
+
                  </div>
 
         )
     }
 
 }
+
+function mapState(state) {
+    const { loggingIn, errorMessage } = state.authenticationReducer;
+    return { loggingIn, errorMessage };
+}
+
+const actionCreators = {
+    login: userActions.login,
+    logout: userActions.logout
+};
+
+export default connect(mapState, actionCreators)(LoginComponent)

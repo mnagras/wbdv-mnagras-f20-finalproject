@@ -1,8 +1,9 @@
 import React from "react";
 import { Route, Link} from "react-router-dom";
 import HeaderComponent from "./HeaderComponent";
+import { connect } from 'react-redux';
 
-export default class ProfileComponent extends React.Component {
+class ProfileComponent extends React.Component {
     constructor(props) {
         super(props)
     }
@@ -21,22 +22,29 @@ export default class ProfileComponent extends React.Component {
                 <h1>Profile</h1>
                 <form>
                     <div className="form-group row">
-                        <label for="usernameFld" className="col-sm-2 col-form-label">
-                            Username </label>
+                        <label  className="col-sm-2 col-form-label"> First Name </label>
                         <div className="col-sm-10">
                             <input className="form-control"
-                                   id="usernameFld" readonly
-                                   placeholder="Alice"></input>
+                                   id="firstName" readonly value = {this.props.user.firstName} >
+                            </input>
                         </div>
                     </div>
-        
+
                     <div className="form-group row">
-                        <label for="phoneFld" className="col-sm-2 col-form-label">
-                            Phone Number </label>
+                        <label for="phoneFld" className="col-sm-2 col-form-label"> Last Name </label>
                         <div className="col-sm-10">
-                            <input type="tel" className="form-control"
-                                   id="phoneFld"
-                                   placeholder="(555) 123-4324"></input>
+                            <input className="form-control" id="lastname"
+                            value = {this.props.user.lastName} >
+                            </input>
+                        </div>
+                    </div>
+
+                    <div className="form-group row">
+                        <label for="phoneFld" className="col-sm-2 col-form-label"> Phone Number </label>
+                        <div className="col-sm-10">
+                            <input type="tel" className="form-control" id="phoneFld"
+                            value = {this.props.user.phoneNumber} >
+                            </input>
                         </div>
                     </div>
         
@@ -44,9 +52,9 @@ export default class ProfileComponent extends React.Component {
                         <label for="emailFld" className="col-sm-2 col-form-label">
                             Email </label>
                         <div className="col-sm-10">
-                            <input type="email" className="form-control"
-                                   id="emailFld"
-                                   placeholder="alice@wonderland.com"></input>
+                            <input type="email" className="form-control" id="emailFld"
+                                   value={this.props.user.email}>
+                                </input>
                         </div>
                     </div>
         
@@ -56,7 +64,7 @@ export default class ProfileComponent extends React.Component {
                         <div className="col-sm-10">
                             <input type="date" className="form-control"
                                    id="dobFld"
-                                    placeholder="03/23/1999"></input>
+                                    value={this.props.user.dob}></input>
                         </div>
                     </div>
         
@@ -66,7 +74,7 @@ export default class ProfileComponent extends React.Component {
                         <div className="col-sm-10">
                             <input type="role" className="form-control"
                                    id="role"
-                                   placeholder="admin"></input>
+                                   placeholder={this.props.user.role}></input>
                         </div>
                     </div>
 
@@ -88,3 +96,11 @@ export default class ProfileComponent extends React.Component {
         )
     }
 }
+
+function mapState(state) {
+    const { authenticationReducer } = state;
+    const { user } = authenticationReducer;
+    return { user };
+}
+
+export default connect(mapState)(ProfileComponent);
