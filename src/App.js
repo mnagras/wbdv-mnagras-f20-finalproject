@@ -17,9 +17,11 @@ function App() {
         <Switch>
              <Route exact path="/" component={HomePageComponent}/>
              <Route exact path="/home"  component={HomePageComponent}/>
-              <Route exact path="/search"  component={SearchComponent}/>
+             <Route path="/search/:keyword" component={SearchComponent} />
+              <Route  path="/search"  component={SearchComponent}/>
               <Route path="/login" component={LoginComponent}/>
-              <Route path="/search/:productId" component={ProductComponent} />
+              <Route path="/profile/:userId" component={ProfileComponent} />
+              <Route path="/details/:productId" component={ProductComponent} />
               <Route path="/register" component={RegisterComponent}/>
               <Route path="/profile" component={ProfileComponent}/>
         </Switch>

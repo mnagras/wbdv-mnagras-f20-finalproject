@@ -4,10 +4,13 @@ import HeaderComponent from "./HeaderComponent";
 
 
 export default class SearchComponent extends React.Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
+        let keyword1 = '';
+        if (this.props.match.params.keyword)
+           keyword1 = this.props.match.params.keyword;
         this.state = {
-            keyword: '',
+            keyword: keyword1,
             products: [],
             selectedProduct: {
                 title: "",
@@ -15,6 +18,10 @@ export default class SearchComponent extends React.Component {
             }
         }
     }
+
+    componentDidMount() {
+
+            }
 
     keywordChanged = event => this.setState({keyword: event.target.value})
     searchProduct = () => {
@@ -57,6 +64,7 @@ export default class SearchComponent extends React.Component {
                 onChange={this.keywordChanged}
                     className="form-control"
                     placeholder="keyword"/>
+
                 <div className="input-group-append">
 
                     <button
@@ -86,7 +94,7 @@ export default class SearchComponent extends React.Component {
                 product.title.includes(this.state.keyword) ?
 
                     <tr>
-                     <td> <Link to={`/search/${product.id}`}> {product.title} </Link> </td>
+                     <td> <Link to={`/details/${product.id}`}> {product.title} </Link> </td>
                      <td> {product.product_type}</td>
                      <td> ${product.variants[0].price}</td>
                      <td> {product.vendor}</td>

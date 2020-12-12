@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import "../Header.css";
 import Logo from "../images/foodlover.png";
 
+
+
  class HeaderComponent extends React.Component {
     constructor(props) {
         super(props)
