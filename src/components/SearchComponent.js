@@ -25,7 +25,7 @@ export default class SearchComponent extends React.Component {
 
     keywordChanged = event => this.setState({keyword: event.target.value})
     searchProduct = () => {
-        fetch(`http://localhost:9000/productListAPI/${this.state.keyword}`)
+        fetch(`https://cs4550-final-node-mnagras.herokuapp.com/productListAPI/${this.state.keyword}`)
             .then(response => response.json())
              .then(this.renderProducts);
 

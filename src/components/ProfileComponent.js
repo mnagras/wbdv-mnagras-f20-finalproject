@@ -25,10 +25,10 @@ class ProfileComponent extends React.Component {
           this.setState({ loggedInUser : true})
 
          Promise.all([
-                fetch('http://localhost:9000/users/' + userId),
-                fetch('http://localhost:9000/reviews/user/' + userId),
-                fetch('http://localhost:9000/followers/' + userId),
-                fetch('http://localhost:9000/followers/following/' + userId)
+                fetch('https://cs4550-final-node-mnagras.herokuapp.com/users/' + userId),
+                fetch('https://cs4550-final-node-mnagras.herokuapp.com/reviews/user/' + userId),
+                fetch('https://cs4550-final-node-mnagras.herokuapp.com/followers/' + userId),
+                fetch('https://cs4550-final-node-mnagras.herokuapp.com/followers/following/' + userId)
             ]).then(([res1, res2, res3, res4]) => Promise.all([res1.json(), res2.json(), res3.json(), res4.json()]))
                 .then(([data1, data2, data3, data4]) => this.setState({
                 user: data1.body,
@@ -49,7 +49,7 @@ class ProfileComponent extends React.Component {
 
     updateUser = (e) => {
        e.preventDefault();
-       fetch("http://localhost:9000/users/" + this.state.user.userId,
+       fetch("https://cs4550-final-node-mnagras.herokuapp.com/users/" + this.state.user.userId,
         {
             method: "PUT",
             headers: {

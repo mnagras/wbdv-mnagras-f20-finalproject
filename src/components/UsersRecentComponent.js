@@ -13,7 +13,7 @@ export default class UsersRecentComponent extends React.Component {
     }
 
     componentDidMount() {
-            fetch(`http://localhost:9000/users/recent`)
+            fetch(`https://cs4550-final-node-mnagras.herokuapp.com/users/recent`)
               .then(response => response.json())
                .then(this.renderUsers);
             }

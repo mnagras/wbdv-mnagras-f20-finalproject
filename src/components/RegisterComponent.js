@@ -37,7 +37,7 @@ export default class RegisterComponent extends React.Component {
 
     registerUser = (e) => {
        e.preventDefault();
-       fetch("http://localhost:9000/users",
+       fetch("https://cs4550-final-node-mnagras.herokuapp.com/users",
         {
             method: "POST",
             headers: {

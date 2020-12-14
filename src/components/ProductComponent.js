@@ -34,8 +34,8 @@ constructor(props) {
         const productId = this.props.match.params.productId;
 
          Promise.all([
-                fetch('http://localhost:9000/productAPI/' + productId),
-                fetch('http://localhost:9000/reviews/' + productId)
+                fetch('https://cs4550-final-node-mnagras.herokuapp.com/productAPI/' + productId),
+                fetch('https://cs4550-final-node-mnagras.herokuapp.com/reviews/' + productId)
             ]).then(([res1, res2]) => Promise.all([res1.json(), res2.json()])).then(([data1, data2]) => this.setState({
                 product: data1.body.product,
                 reviews : data2
@@ -46,7 +46,7 @@ constructor(props) {
         const productId = this.props.match.params.productId;
         const prevProductId = prevProps.match.params.productId
         if(productId !== prevProductId) {
-            fetch("http://localhost:9000/productAPI/" + productId)
+            fetch("https://cs4550-final-node-mnagras.herokuapp.com/productAPI/" + productId)
             .then(response => response.json())
             .then(this.setProduct)
           }
@@ -80,7 +80,7 @@ constructor(props) {
 
      saveComment = (e) => {
         e.preventDefault();
-        fetch("http://localhost:9000/reviews",
+        fetch("https://cs4550-final-node-mnagras.herokuapp.com/reviews",
          {
              method: "POST",
              headers: {

@@ -2,7 +2,6 @@ import logo from './logo.svg';
 import './App.css';
 import React from "react";
 import { Router, Route, Link, Switch,Redirect} from "react-router-dom";
-import OnlineShopClient from "./components/OnlineShopClient";
 import SearchComponent from "./components/SearchComponent";
 import ProductComponent from "./components/ProductComponent.js";
 import LoginComponent from "./components/LoginComponent";

@@ -48,19 +48,7 @@ import { userActions } from '../actions/userActions';
            else {
             this.setState({message: "Enter email and password"})
            }
-           /*
-           fetch("http://localhost:9000/users/login",
-            {
-                method: "POST",
-                headers: {
-                    "content-type": "application/json"
-                },
-                body: JSON.stringify(this.state.user)
-            })
-            .then(response => response.json())
-            .then(this.setLogin)
-            */
-            }
+        }
 
 
     render() {

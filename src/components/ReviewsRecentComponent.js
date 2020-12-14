@@ -14,7 +14,7 @@ export default class ReviewsRecentComponent extends React.Component {
     }
 
     componentDidMount() {
-            fetch(`http://localhost:9000/reviews/recent`)
+            fetch(`https://cs4550-final-node-mnagras.herokuapp.com/reviews/recent`)
               .then(response => response.json())
                .then(this.renderReviews);
             }

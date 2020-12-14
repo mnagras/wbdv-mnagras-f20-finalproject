@@ -23,18 +23,14 @@ class UsersComponent extends React.Component {
         }
         let userId = this.props.user.userId;
         Promise.all([
-                    fetch('http://localhost:9000/users'),
-                    fetch('http://localhost:9000/followers/following/' + userId),
+                    fetch('https://cs4550-final-node-mnagras.herokuapp.com/users'),
+                    fetch('https://cs4550-final-node-mnagras.herokuapp.com/followers/following/' + userId),
                 ]).then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
                     .then(([data1, data2]) => this.setState({
                     users: data1.body,
                     following: data2
                 })).then(status => this.createFollowArr());
-                /*
-            fetch(`http://localhost:9000/users`)
-              .then(response => response.json())
-               .then(this.renderUsers);
-               */
+
     }
 
     keywordChanged = event => this.setState({keyword: event.target.value})
@@ -49,7 +45,7 @@ class UsersComponent extends React.Component {
     followUser = (followingId) => e =>{
       e.preventDefault();
       let follow = { followerId : this.props.user.userId , userId  : followingId}
-       fetch("http://localhost:9000/followers",
+       fetch("https://cs4550-final-node-mnagras.herokuapp.com/followers",
         {
             method: "POST",
             headers: {
@@ -72,7 +68,7 @@ class UsersComponent extends React.Component {
 
    deleteUser = (userId) => e => {
     e.preventDefault();
-       fetch("http://localhost:9000/users/" + userId,
+       fetch("https://cs4550-final-node-mnagras.herokuapp.com/users/" + userId,
         {
             method: "DELETE",
             headers: {
@@ -86,7 +82,7 @@ class UsersComponent extends React.Component {
     unFollowUser = (followingId) => e => {
         e.preventDefault();
           let follow = { followerId : this.props.user.userId , userId  : followingId}
-           fetch("http://localhost:9000/followers",
+           fetch("https://cs4550-final-node-mnagras.herokuapp.com/followers",
             {
                 method: "DELETE",
                 headers: {
