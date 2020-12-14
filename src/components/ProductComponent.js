@@ -40,16 +40,6 @@ constructor(props) {
                 product: data1.body.product,
                 reviews : data2
             }));
-
-            /*
-        fetch("http://localhost:9000/reviews/" + productId)
-                    .then(response => response.json())
-                    .then(this.setReviews);
-
-        fetch("http://localhost:9000/productAPI/" + productId)
-            .then(response => response.json())
-            .then(this.setProduct);
-            */
      }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -66,7 +56,7 @@ constructor(props) {
         e.persist();
         let store = this.state;
         store.reviewObject[e.target.id] = e.target.value;
-        store.reviewObject.date = new Date().toUTCString();
+        store.reviewObject.date = new Date();
         store.reviewObject.userId = this.props.user.userId;
         store.reviewObject.productId = this.state.product.id;
         this.setState(store);
@@ -117,11 +107,9 @@ constructor(props) {
         <div>
         <HeaderComponent/>
         <br/>
-        <br/>
-        <br/>
           <div className="container">
               <h3> Product Details </h3>
-              <div className="row">
+              <div className="row p-3 my-3 border">
                 <div className="col-3">
                 <p></p>
                 <div className="row">
@@ -138,13 +126,10 @@ constructor(props) {
                 </div>
             </div>
 
-
-
-
           </div>
           <div className="container">
           <h5>Reviews </h5>
-          {!this.props.loggedIn &&   <a href="/login">Login</a>  }
+          {!this.props.loggedIn &&   <a href="/login">Login to review product</a>  }
           {this.props.loggedIn && !this.state.bCommenting  &&
             <button className="btn btn-sm btn-success" onClick={()=>{this.addComment()}}>Comment</button>
            }
@@ -164,7 +149,7 @@ constructor(props) {
          <li> <div class="media border p-3">
              <img src={Avatar} class = "mr-3 mt-3 rounded-circle" style={{"width":"60px"}} />
              <div class="media-body">
-             <h4> <Link to={`/profile/${review.userId}`}> {review.lastName} {review.firstName} </Link> <small> <i> Posted on {review.date}</i> </small></h4>
+             <h4> <Link to={`/profile/${review.userId}`}> {review.firstName} {review.lastName} </Link> <small> <i> Posted on {review.date}</i> </small></h4>
              { review.bLike && <i className="fa fa-thumbs-down" aria-hidden="true"> Like </i> }
              { !review.bLike && <i className="fa fa-thumbs-up" aria-hidden="true"> DisLike</i> }
              <p> Comment :  {review.comment} </p>

@@ -7,7 +7,6 @@ import reportWebVitals from './reportWebVitals';
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import {combineReducers, createStore, applyMiddleware} from "redux";
 import {Provider} from "react-redux";
-import routes from "./Routes.js";
 import authenticationReducer from "./reducers/authentication.reducer";
 import userReducer from "./reducers/user.reducer";
 import thunkMiddleware from 'redux-thunk';

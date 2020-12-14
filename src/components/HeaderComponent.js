@@ -22,23 +22,40 @@ import Logo from "../images/foodlover.png";
 
     render() {
         return (
-            <header className="Header">
-                  <img src={Logo} className="Logo" alt="logo" />
+             <div >
+             <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+               <img src={Logo} className="Logo" alt="logo" />
+               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                 <span class="navbar-toggler-icon"></span>
+               </button>
+               <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                 <ul class="navbar-nav">
+                   <li class="nav-item">
+                     <Link to="/home" class="nav-link" >Home</Link>
+                   </li>
+                   <li class="nav-item">
+                     <Link to="/search" class="nav-link">Products</Link>
+                   </li>
+                   <li class="nav-item">
+                     <Link to="/users" class="nav-link">Users</Link>
+                    </li>
+                    </ul>
+                    <div className="nav navbar-nav pull-md-right">
+                    <ul class="nav navbar-nav">
+                   <li class="nav-item">
+                      {!this.props.loggedIn && <a href="/login" class="nav-link">Login</a>}
+                      {this.props.loggedIn &&   <a href="/login" class="nav-link">Logout</a> }
+                         </li>
+                         <li class="nav-item">
+                       {this.props.loggedIn &&  <p > Hello
+                          <a href="/profile" > {this.props.user.firstName} </a> </p> }
+                   </li>
+                   </ul>
+                   </div>
 
-                    <nav className="Nav">
-                      <a href="/">Home</a>
-                      <a href="/search/">Shop</a>
-                      {!this.props.loggedIn && <a href="/login">Login</a>}
-                      {this.props.loggedIn && <h6 className="loggedUser"> Hello
-                         <a href="/profile" > {this.props.user.firstName} </a> </h6> }
-                       {this.props.loggedIn &&   <a href="/login">Logout</a> }
-                       { this.props.loggedIn &&  this.props.user.role === 'Admin' &&  <a href="/users">Users</a> }
-                    </nav>
-
-                  <button className="Burger">
-                    🍔
-                  </button>
-                </header>
+               </div>
+             </nav>
+             </div>
         )
     }
 }

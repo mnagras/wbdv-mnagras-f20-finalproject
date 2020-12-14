@@ -7,6 +7,8 @@ import LoginComponent from "./LoginComponent";
 import RegisterComponent from "./RegisterComponent";
 import ProfileComponent from "./ProfileComponent";
 import HeaderComponent from "./HeaderComponent";
+import UsersRecentComponent from "./UsersRecentComponent";
+import ReviewsRecentComponent from "./ReviewsRecentComponent";
 import '../App.js';
 import { connect } from 'react-redux';
 import { userActions } from '../actions/userActions';
@@ -21,24 +23,39 @@ constructor(props) {
         <div>
             <HeaderComponent/>
             <br/>
-            <br/>
-            <br/>
-            <div className="container">
-               <p>This is my online store</p>
-            </div>
+             <div class="container">
+                <div class="jumbotron">
+                 <h1>Manami Foodie Club </h1>
+                 <p>Bootstrap is the most popular HTML, CSS, and JS framework for developing
+                 responsive, mobile-first projects on the web.</p>
+                 </div>
+                 {this.props.loggedIn
+                  ? (<div class="jumbotron">
+                 <h1>Logged in User </h1>
+                 <p>We are getting some exciting new things! Keep an eye out!</p>
+                 </div>)
+                 : (<div class="jumbotron">
+                    <h1>Hello Anonymous User </h1>
+                    <p>Please join our blog for all food related topics</p>
+                    </div>)
 
+                 }
 
+                 <h5>Recent Registered Users</h5>
+                 <UsersRecentComponent/>
+
+               <h5>Recent Comments</h5>
+               <ReviewsRecentComponent/>
+             </div>
         </div>
         )
     }
 }
 
 function mapState(state) {
-    //const { users, authentication } = state;
     const { authenticationReducer } = state;
-    const { user } = authenticationReducer;
-    //return { user, users };
-    return { user };
+    const { user, loggedIn } = authenticationReducer;
+    return { user, loggedIn };
 }
 
 const actionCreators = {

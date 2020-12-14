@@ -38,12 +38,6 @@ export default class SearchComponent extends React.Component {
        })
 
 
-    productDetails = (productId) => {
-        fetch(`http://localhost:9000/productAPI/${productId}`)
-            .then(response => response.json())
-            .then(this.setProduct)
-    }
-
     setProduct = (statusCode) =>
 
         this.setState({
@@ -54,8 +48,6 @@ export default class SearchComponent extends React.Component {
         return (
         <div>
         <HeaderComponent/>
-        <br/>
-        <br/>
         <br/>
         <div className="container">
             <h2>Search</h2>
@@ -70,7 +62,7 @@ export default class SearchComponent extends React.Component {
                     <button
                     onClick={this.searchProduct}
 
-                    className="btn btn-primary">
+                    className="btn btn-primary ml-2">
                         Search
                     </button>
                 </div>

@@ -23,6 +23,7 @@ export default class RegisterComponent extends React.Component {
         e.persist();
         let store = this.state;
         store.user[e.target.id] = e.target.value;
+        store.user.registeredDate = new Date();
         this.setState(store);
     }
 
@@ -52,12 +53,12 @@ export default class RegisterComponent extends React.Component {
 
     render() {
         return (
-
         <div className="container">
+                <br/>
                 <h1>
                     Register
                 </h1>
-        
+
                 <form>
                     <div className="form-group row">
                         <label for="email" className="col-sm-2 col-form-label">
@@ -77,7 +78,6 @@ export default class RegisterComponent extends React.Component {
                         <div className="col-sm-10">
                                 <input className="form-control"
                                        id="firstName"
-
                                        onChange={this.changeHandler}
                                        placeholder="alice"></input>
                         </div>
@@ -89,7 +89,6 @@ export default class RegisterComponent extends React.Component {
                         <div className="col-sm-10">
                                 <input className="form-control"
                                        id="lastName"
-
                                        onChange={this.changeHandler}
                                        placeholder="prince"></input>
                         </div>
@@ -101,7 +100,6 @@ export default class RegisterComponent extends React.Component {
                         <div className="col-sm-10">
                             <input type="password" className="form-control"
                                    id="password"
-
                                    onChange={this.changeHandler}
                                    placeholder="123qwe#$%"></input>
                         </div>
@@ -113,7 +111,6 @@ export default class RegisterComponent extends React.Component {
                         <div className="col-sm-10">
                             <input type="password" className="form-control"
                                    id="verifypassword"
-
                                    onChange={this.changeHandler}
                                    placeholder="123qwe#$%"></input>
                         </div>
@@ -125,8 +122,8 @@ export default class RegisterComponent extends React.Component {
                         <div className="col-sm-10">
                             <select className="form-control"
                                    id="role"
-
                                    onChange={this.changeHandler}>
+                                <option value="0">Choose User Role</option>
                                 <option value="Customer">Customer</option>
                                 <option value="Admin">Admin</option>
                             </select>
@@ -139,6 +136,13 @@ export default class RegisterComponent extends React.Component {
                             <button className="btn btn-primary btn-block" onClick={this.registerUser}
                             > Sign Up
                             </button>
+                            <div className="row">
+                                <div className="col-6">
+                                    <Link to={`/home`} className="float-left">
+                                    Cancel
+                                    </Link>
+                                </div>
+                            </div>
 
                     </div>
                     </div>

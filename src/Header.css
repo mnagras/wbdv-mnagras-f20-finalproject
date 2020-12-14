@@ -1,9 +1,10 @@
  .Header {
   position: fixed;
   top: 0; /* Stick it to the top */
+  /*
   height: 50px;
   width: 100vw;
-
+  */
   display: grid;
   grid-template-areas: "logo nav";
 

@@ -9,6 +9,7 @@ import LoginComponent from "./components/LoginComponent";
 import RegisterComponent from "./components/RegisterComponent";
 import ProfileComponent from "./components/ProfileComponent";
 import HomePageComponent from "./components/HomePageComponent";
+import UsersComponent from "./components/UsersComponent";
 import history from './history';
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
               <Route path="/details/:productId" component={ProductComponent} />
               <Route path="/register" component={RegisterComponent}/>
               <Route path="/profile" component={ProfileComponent}/>
+              <Route path="/users" component={UsersComponent}/>
         </Switch>
     </Router>
   );
