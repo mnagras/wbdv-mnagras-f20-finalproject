@@ -15,3 +15,5 @@ The admins should be able to:
 [Project Description](https://docs.google.com/document/d/1bdAHXpIKEa5Nw7ILiLMZ8Uao3p05kYBs-tOVfk6__Bw/edit?usp=sharing)
 
 
+# How to Run Project
+Running remotely on Heroku (https://cs4550-final-client-mnagras.herokuapp.com/)
