@@ -1,6 +1,6 @@
 import React from "react";
 import {BrowserRouter as Router, Route, Link, Redirect, Switch} from "react-router-dom";
-import OnlineShopClient from "./OnlineShopClient";
+//import OnlineShopClient from "./OnlineShopClient";
 import SearchComponent from "./SearchComponent";
 import ProductComponent from "./ProductComponent.js";
 import LoginComponent from "./LoginComponent";
