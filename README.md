@@ -2,15 +2,14 @@
 Final Project Repository for Web Development
 
 
-The project is to create a website for an online grocery store. It will have two main users: buyers and sellers. 
-The buyers would use the website:
+The project is to create a website for a social media site about food. It will have two main users: customers and admins. 
+The customers would use the website:
   to search and browse for items
-  Order items and pay for them
   Mark their favorite items.
 
-The sellers should be able to:
-  see what items are in and out of stock and update the grocery list when items get added or removed
-  track and review orders made by customers
-  Calculate total profits.
+The admins should be able to:
+  track and review actions made by customers on the site
+  make sure no one is doing any that harms the site and other members
+  delete users and products from the site as they see fit
 
-[Project Description](https://docs.google.com/document/d/1tci8pyhYKKJmZZWuB3FMiqouxpYXWhk6knfiA0_o_0Q/edit?usp=sharing)
+[Project Description](https://docs.google.com/document/d/1bdAHXpIKEa5Nw7ILiLMZ8Uao3p05kYBs-tOVfk6__Bw/edit?usp=sharing)
