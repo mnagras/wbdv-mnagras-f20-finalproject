@@ -13,6 +13,8 @@ class ProfileComponent extends React.Component {
         followers: [],
         following: [],
         loggedInUser : false,
+        message: '',
+        pwdUpdated: false
         }
         this.changeHandler = this.changeHandler.bind(this);
     }
@@ -45,10 +47,17 @@ class ProfileComponent extends React.Component {
          })
 
     updateMessage = (statusCode) => {
+         this.setState({message: "Profile Data Updated.."})
     }
 
     updateUser = (e) => {
        e.preventDefault();
+
+        if (this.state.pwdUpdated && (this.state.user.password !== this.state.user.verifypassword))
+        {
+          this.setState({message: "Passwords do not match. Please enter again"});
+          return;
+        }
        fetch("https://cs4550-final-node-mnagras.herokuapp.com/users/" + this.state.user.userId,
         {
             method: "PUT",
@@ -65,7 +74,8 @@ class ProfileComponent extends React.Component {
         e.persist();
         let store = this.state;
         store.user[e.target.id] = e.target.value;
-        //store.user.registeredDate = new Date().toUTCString();
+        if (e.target.id === "password")
+         store.pwdUpdated = true
         this.setState(store);
     }
 
@@ -80,7 +90,7 @@ class ProfileComponent extends React.Component {
                     <div className="form-group row">
                         <label  className="col-sm-2 col-form-label"> First Name </label>
                         <div className="col-sm-10">
-                            <input className="form-control"
+                            <input className="form-control" onChange={this.changeHandler}
                                    id="firstName" value = {this.state.user.firstName} >
                             </input>
                         </div>
@@ -89,7 +99,7 @@ class ProfileComponent extends React.Component {
                     <div className="form-group row">
                         <label  className="col-sm-2 col-form-label"> Last Name </label>
                         <div className="col-sm-10">
-                            <input className="form-control" id="lastName"
+                            <input className="form-control" id="lastName" onChange={this.changeHandler}
                             value = {this.state.user.lastName} >
                             </input>
                         </div>
@@ -117,7 +127,7 @@ class ProfileComponent extends React.Component {
                             Email </label>
                         <div className="col-sm-10">
                             <input type="email" className="form-control" id="email"
-                                   readonly value={this.state.user.email}>
+                                   readOnly value={this.state.user.email}>
                                 </input>
                         </div>
                     </div>
@@ -127,9 +137,9 @@ class ProfileComponent extends React.Component {
                             Password </label>
                         <div className="col-sm-10">
                             <input type="password" className="form-control"
-                                   id="password"
+                                   id="password" value = {this.state.user.password}
                                    onChange={this.changeHandler}
-                                   placeholder="123qwe#$%"></input>
+                                   ></input>
                         </div>
                     </div>
 
@@ -138,9 +148,9 @@ class ProfileComponent extends React.Component {
                             Verify Password </label>
                         <div className="col-sm-10">
                             <input type="password" className="form-control"
-                                   id="verifypassword"
+                                   id="verifypassword" value = {this.state.user.verifypassword}
                                    onChange={this.changeHandler}
-                                   placeholder="123qwe#$%"></input>
+                                   ></input>
                         </div>
                     </div>
                     <div className="form-group row">
@@ -162,8 +172,10 @@ class ProfileComponent extends React.Component {
                              </input>
                          </div>
                      </div>
-
-                    <button className="btn btn-success float-right" onClick={this.updateUser}>Submit</button>
+                    <div className="form-group row ">
+                        <button className="btn btn-success ml-5 mr-5" onClick={this.updateUser}>Submit</button>
+                        <p> {this.state.message} </p>
+                    </div>
                     </div>
                     }
 
