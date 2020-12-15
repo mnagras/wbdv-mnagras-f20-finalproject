@@ -47,8 +47,8 @@ import Logo from "../images/foodlover.png";
                       {this.props.loggedIn &&   <a href="/login" class="nav-link">Logout</a> }
                          </li>
                          <li class="nav-item">
-                       {this.props.loggedIn &&  <p > Hello
-                          <a href="/profile" > {this.props.user.firstName} </a> </p> }
+                       {this.props.loggedIn &&  <span className="nav-bar-text" >  Hello
+                          <a href="/profile" > {this.props.user.firstName} </a> </span> }
                    </li>
                    </ul>
                    </div>

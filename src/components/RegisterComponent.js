@@ -11,6 +11,7 @@ export default class RegisterComponent extends React.Component {
             firstName: '',
             lastName: '',
             password: '',
+            verifypassword: '',
             role: '',
           },
           message: ''
@@ -37,6 +38,11 @@ export default class RegisterComponent extends React.Component {
 
     registerUser = (e) => {
        e.preventDefault();
+        if (this.state.user.password !== this.state.user.verifypassword)
+        {
+          this.setState({message: "Passwords do not match. Please enter again"});
+          return;
+        }
        fetch("https://cs4550-final-node-mnagras.herokuapp.com/users",
         {
             method: "POST",

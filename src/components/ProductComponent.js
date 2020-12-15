@@ -1,10 +1,10 @@
 import React from "react";
 import HeaderComponent from "./HeaderComponent";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-//import { fa-thumbs-down, fa-thumbs-up } from '@fortawesome/fontawesome-free-solid'
 import { connect } from 'react-redux';
 import Avatar from "../images/FemaleAvatar5.svg";
 import { Route, Link} from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 
 class ProductComponent extends React.Component {
 
@@ -135,7 +135,7 @@ constructor(props) {
            }
           { this.props.loggedIn && this.state.bCommenting &&
              <div>
-                <i onclick="myFunction(this)" class="fa fa-thumbs-up"></i>
+                <i onclick="myFunction(this)" className="fa fa-thumbs-up"></i>
                 <textarea id="comment" className="commentInput" placeholder=" Add Comment here....."
                  onChange={this.changeHandler}>
                  </textarea>
@@ -150,8 +150,7 @@ constructor(props) {
              <img src={Avatar} class = "mr-3 mt-3 rounded-circle" style={{"width":"60px"}} />
              <div class="media-body">
              <h4> <Link to={`/profile/${review.userId}`}> {review.firstName} {review.lastName} </Link> <small> <i> Posted on {review.date}</i> </small></h4>
-             { review.bLike && <i className="fa fa-thumbs-down" aria-hidden="true"> Like </i> }
-             { !review.bLike && <i className="fa fa-thumbs-up" aria-hidden="true"> DisLike</i> }
+
              <p> Comment :  {review.comment} </p>
              </div>
          </div> </li>

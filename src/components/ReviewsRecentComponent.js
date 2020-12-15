@@ -31,7 +31,7 @@ export default class ReviewsRecentComponent extends React.Component {
 
     render() {
         return (
-            <ul className="container">
+            <ul className="container  p-3 my-3 border">
                 { this.state.reviews.map((review, index) => (
                 <li>
                     <h6> <Link to={`/profile/${review.userId}`}> {review.firstName} {review.lastName} commented </Link> </h6>

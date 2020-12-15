@@ -110,15 +110,7 @@ class ProfileComponent extends React.Component {
                     </div>
 
                     { this.state.loggedInUser && <div>
-                    <div className="form-group row">
-                        <label  className="col-sm-2 col-form-label"> Phone Number </label>
-                        <div className="col-sm-10">
-                            <input type="tel" className="form-control" id="phoneNumber"
-                            value = {this.state.user.phoneNumber}
-                            onChange={this.changeHandler}>
-                            </input>
-                        </div>
-                    </div>
+
         
                     <div className="form-group row">
                         <label  className="col-sm-2 col-form-label">
@@ -129,7 +121,28 @@ class ProfileComponent extends React.Component {
                                 </input>
                         </div>
                     </div>
-        
+
+                   <div className="form-group row">
+                        <label for="password" className="col-sm-2 col-form-label">
+                            Password </label>
+                        <div className="col-sm-10">
+                            <input type="password" className="form-control"
+                                   id="password"
+                                   onChange={this.changeHandler}
+                                   placeholder="123qwe#$%"></input>
+                        </div>
+                    </div>
+
+                    <div className="form-group row">
+                        <label for="password" className="col-sm-2 col-form-label">
+                            Verify Password </label>
+                        <div className="col-sm-10">
+                            <input type="password" className="form-control"
+                                   id="verifypassword"
+                                   onChange={this.changeHandler}
+                                   placeholder="123qwe#$%"></input>
+                        </div>
+                    </div>
                     <div className="form-group row">
                         <label className="col-sm-2 col-form-label">
                             Date of Birth </label>
@@ -140,6 +153,15 @@ class ProfileComponent extends React.Component {
                                     value={this.state.user.dob}></input>
                         </div>
                     </div>
+                    <div className="form-group row">
+                         <label  className="col-sm-2 col-form-label"> Phone Number </label>
+                         <div className="col-sm-10">
+                             <input type="tel" className="form-control" id="phoneNumber"
+                             value = {this.state.user.phoneNumber}
+                             onChange={this.changeHandler}>
+                             </input>
+                         </div>
+                     </div>
 
                     <button className="btn btn-success float-right" onClick={this.updateUser}>Submit</button>
                     </div>

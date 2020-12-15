@@ -1,6 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
 import React from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrash } from '@fortawesome/free-brands-svg-icons'
 import { Router, Route, Link, Switch,Redirect} from "react-router-dom";
 import SearchComponent from "./components/SearchComponent";
 import ProductComponent from "./components/ProductComponent.js";

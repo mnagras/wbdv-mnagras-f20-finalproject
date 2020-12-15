@@ -30,7 +30,7 @@ export default class UsersRecentComponent extends React.Component {
 
     render() {
         return (
-        <div className="container">
+        <div className="container  p-3 my-3 border">
             <ul>
                     {
                         this.state.users.map((user, index) => (

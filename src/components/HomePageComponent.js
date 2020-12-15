@@ -26,8 +26,8 @@ constructor(props) {
              <div class="container">
                 <div class="jumbotron">
                  <h1>Manami Foodie Club </h1>
-                 <p>Bootstrap is the most popular HTML, CSS, and JS framework for developing
-                 responsive, mobile-first projects on the web.</p>
+                 <p>Welcome to the World of Snacks. This site is for everyone who loves snacks and
+                 wants to share their thoughts on all types of food.</p>
                  </div>
                  {this.props.loggedIn
                   ? (<div class="jumbotron">
