@@ -20,15 +20,17 @@ export default class SearchComponent extends React.Component {
     }
 
     componentDidMount() {
-
+        fetch(`https://cs4550-final-node-mnagras.herokuapp.com/productListAPI`)
+            .then(response => response.json())
+             .then(this.renderProducts);
             }
 
     keywordChanged = event => this.setState({keyword: event.target.value})
+
     searchProduct = () => {
         fetch(`https://cs4550-final-node-mnagras.herokuapp.com/productListAPI/${this.state.keyword}`)
             .then(response => response.json())
              .then(this.renderProducts);
-
     }
 
     renderProducts = (statusCode) =>
@@ -56,12 +58,9 @@ export default class SearchComponent extends React.Component {
                 onChange={this.keywordChanged}
                     className="form-control"
                     placeholder="keyword"/>
-
                 <div className="input-group-append">
-
                     <button
                     onClick={this.searchProduct}
-
                     className="btn btn-primary ml-2">
                         Search
                     </button>
@@ -83,15 +82,13 @@ export default class SearchComponent extends React.Component {
 
             {
                 this.state.products.map((product, index) => (
-                product.title.includes(this.state.keyword) ?
-
+                ( !this.state.keyword || product.title.includes(this.state.keyword)) ?
                     <tr>
                      <td> <Link to={`/details/${product.id}`}> {product.title} </Link> </td>
                      <td> {product.product_type}</td>
                      <td> ${product.variants[0].price}</td>
                      <td> {product.vendor}</td>
                      </tr>
-
                     : null
                     )
                   )

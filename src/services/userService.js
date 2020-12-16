@@ -1,4 +1,4 @@
-const url = 'http://localhost:9000/users';
+const url = 'https://cs4550-final-client-mnagras.herokuapp.com/users';
 
 export const userService = {
     login,
